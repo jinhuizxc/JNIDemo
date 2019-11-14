@@ -15,6 +15,7 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_com_example_testapp_MainActivity_helloNDK
   (JNIEnv *, jobject);
 
+
 #ifdef __cplusplus
 }
 #endif

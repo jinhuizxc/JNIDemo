@@ -1,12 +1,7 @@
 # JNIDemo
 
-* 参考:
+* 部分参考:
 - [JNI相关配置javah,ndk-build和指令集以及.mk文件详细讲解(亲测可用)](https://blog.csdn.net/liuxu841911548/article/details/53931490)
-
-Program: JDKPath\bin\javah.exe
-Parameters: -classpath . -jni -o ModuleFileDir/src/main/jni/Prompt FileClass
-Working Directory: ModuleFileDir\src\main\Java
-
 - [android studio javah 配置](https://blog.csdn.net/qq_22703355/article/details/79907232)
 ```
 name:javah$JDKPath$\bin\javah.exe
