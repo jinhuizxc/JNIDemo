@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
+    // 首先定义变量showText
+    public String showText = "Hello World";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +29,12 @@ public class MainActivity extends AppCompatActivity {
     /**
      * MainActivity.onCreate() 调用 stringFromJNI()，
      * 后者返回“来Hello from C++”，并使用它来更新 TextView。
-     *
      */
     public native String stringFromJNI();
+
+    /**
+     *  添加native方法accessField()：
+     */
+    public native void accessField();
+
 }
