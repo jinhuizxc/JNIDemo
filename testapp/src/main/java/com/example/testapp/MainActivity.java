@@ -1,5 +1,8 @@
 package com.example.testapp;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -7,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.util.Log;
 import android.view.View;
@@ -89,7 +93,37 @@ public class MainActivity extends AppCompatActivity {
 
         // todo JNI操作Java数组
         new JniArrayOperation().test();
+
+        /**
+         * todo JNI实现文件加解密
+         编写测试代码
+         实现创建文件逻辑
+         实现JNI加密逻辑
+         实现JNI解密逻辑
+         执行测试代码
+
+         执行程序会在 手机根目录 生成以下三个文件：
+         testJni.txt：原文件
+         encryption_testJni.txt：加密之后的文件
+         decryption_testJni.txt：解密之后的文件
+
+         确实在手机存储的位置发现3个文件，ok;
+         */
+        testEncryptor();
     }
+
+    private void testEncryptor() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0x1024);
+                return;
+            }
+        }
+        new Encryptor().test();
+    }
+
+
 
     public native Date accessConstructor();
 

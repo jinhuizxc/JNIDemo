@@ -17,3 +17,11 @@ add_library( array_operation
         src/main/cpp/array_operation.cpp)
 target_link_libraries( hello-ndk array_operation
         ${log-lib} )
+
+add_library(encryptor
+        SHARED
+        src/main/cpp/encryptor.cpp)
+target_link_libraries(
+        encryptor
+        ${log-lib})
+
