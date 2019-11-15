@@ -11,3 +11,9 @@ find_library( log-lib # 库路径的变量名
 #将预构建库关联到您自己的原生库
 target_link_libraries( hello-ndk
                        ${log-lib} )
+
+add_library( array_operation
+        SHARED
+        src/main/cpp/array_operation.cpp)
+target_link_libraries( hello-ndk array_operation
+        ${log-lib} )

@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         res = accessConstructor().toString();
         staticConstShow.setText(res);
 
+        // todo JNI操作Java数组
+        new JniArrayOperation().test();
     }
 
     public native Date accessConstructor();
