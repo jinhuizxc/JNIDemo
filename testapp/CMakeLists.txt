@@ -25,3 +25,14 @@ target_link_libraries(
         encryptor
         ${log-lib})
 
+add_library(
+        file_operation
+        SHARED
+        src/main/cpp/file_operation.cpp)
+target_link_libraries(
+        file_operation
+        ${log-lib})
+
+
+
+

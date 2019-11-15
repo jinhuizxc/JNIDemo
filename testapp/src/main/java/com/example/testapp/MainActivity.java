@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -110,6 +111,37 @@ public class MainActivity extends AppCompatActivity {
          确实在手机存储的位置发现3个文件，ok;
          */
         testEncryptor();
+
+        /**
+         * JNI实现文件拆分和合并
+         编写测试代码
+         实现创建文件逻辑
+         实现JNI文件拆分逻辑
+         实现JNI文件合并逻辑
+         执行测试代码
+         */
+        testFileOperation();
+    }
+
+    private void testFileOperation() {
+        if (hasFilePermission()) {
+            new JniFileOperation().test();
+            ToastUtils.showShort("任务完成，测试文件路径:" + Config.getBaseUrl());
+        }
+    }
+
+    /**
+     * 申请权限
+     */
+    private boolean hasFilePermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0x1024);
+                return false;
+            }
+        }
+        return true;
     }
 
     private void testEncryptor() {
